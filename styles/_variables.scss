@@ -1,0 +1,44 @@
+// colors
+$white: rgba(255, 255, 255);
+$black: rgba(0, 0, 0);
+
+$grey-600: rgba(61, 102, 102);
+$grey-550: rgba(82, 120, 120);
+$grey-500: rgba(94, 122, 125);
+$grey-400: rgba(127, 157, 159);
+$grey-300: rgba(158, 187, 189);
+$grey-200: rgba(197, 228, 231);
+$grey-50: rgba(243, 249, 250);
+
+$green-900: rgba(0, 71, 75);
+$green-800: rgba(8, 92, 97);
+$green-750: rgba(13, 104, 109);
+$green-400: rgba(38, 194, 174);
+$green-200: rgba(159, 232, 223);
+
+$orange-400: rgba(225, 112, 82);
+
+//spacing
+$spacing-0: 0px;
+$spacing-100: 8px;
+$spacing-200: 16px;
+$spacing-300: 24px;
+$spacing-400: 32px;
+$spacing-600: 48px;
+$spacing-1000: 80px;
+$spacing-1200: 96px;
+$spacing-1500: 120px;
+$spacing-1600: 128px;
+
+//media
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1440px) {
+        @content;
+    }
+}

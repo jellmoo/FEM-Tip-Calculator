@@ -1,0 +1,292 @@
+@use "variables" as *;
+@use "typography" as *;
+@use "reset" as *;
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: $grey-200;
+}
+
+header {
+    margin-bottom: 41px;
+    margin-top: 50px;
+}
+
+.main-container {
+    height: 789px;
+    width: 100%;
+    max-width: 920px;
+    background-color: $white;
+    padding: $spacing-400 $spacing-300;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+
+    @include tablet {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 800px;
+        width: 608px;
+        border-radius: 25px;
+        padding: $spacing-600 $spacing-1000;
+    }
+
+    @include desktop {
+        height: 481px;
+        width: 920px;
+        padding: $spacing-600;
+    }
+}
+
+.content-container {
+    height: 100%;
+    width: 100%;
+    
+    @include desktop {
+        display: flex;
+        gap: $spacing-600;
+        align-items: stretch;
+    }
+}
+
+.bill-container {
+    @include desktop {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.title {
+    @include text-preset-5;
+    color: $grey-500;
+    margin-bottom: $spacing-100;
+}
+
+.results {
+    &.title {
+        color: $white;
+        margin-bottom: 0;
+    }
+}
+
+.results-desc {
+    @include text-preset-6;
+    color: $grey-400;
+}
+
+.results-number {
+    @include text-preset-2;
+    color: $green-400;
+
+    @include tablet {
+        @include text-preset-1;
+    }
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+
+    .input-icon {
+        position: absolute;
+        top: 43%;
+        left: 15px;
+        transform: translateY(-50%);
+        height: 16px;
+        width: auto;
+        pointer-events: none;
+    }
+
+    input {
+        width: 100%;
+        height: 48px;
+        padding: $spacing-100 $spacing-200;
+        text-align: right;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        background-color: $grey-50;
+        @include text-preset-3;
+        color: $green-900;
+
+        &::placeholder {
+            @include text-preset-3;
+            color: $green-900;
+            opacity: 35%;
+            text-align: right;
+        }
+    }
+}
+
+.bill-header {
+    @include desktop {
+        margin-bottom: $spacing-400;
+    }
+}
+
+.tip-selection {
+    @include desktop {
+        margin-bottom: $spacing-400;
+    }
+}
+
+.tip-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: $spacing-200;
+    margin-bottom: $spacing-400;
+
+    @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
+}
+
+.tip-option {
+    border: none;
+    height: 48px;
+    background-color: $green-900;
+    color: $white;
+    @include text-preset-3;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color .5s ease;
+
+    &.custom {
+        background-color: $grey-50;
+        color: $grey-550;
+    }
+    
+    &.active {
+        background-color: $green-400;
+        color: $green-900;
+    }
+    
+    &.custom.active {
+        background-color: $green-400;
+        color: $green-900;
+    }
+
+    &:hover {
+        background-color: $green-200;
+        color: $green-900;
+    }
+}
+
+.tip-option.custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 5px;
+  background-color: $grey-50;
+  cursor: pointer;
+  width: 100%;
+}
+
+.custom-tip-input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: $grey-550;
+  text-align: center;
+  @include text-preset-3;
+
+  &::placeholder {
+    color: $grey-550;
+    @include text-preset-3;
+  }
+}
+
+.results-container {
+    display: block;
+    height: 257px;
+    width: 100%;
+    background-color: $green-900;
+    border-radius: 15px;
+    padding: $spacing-300;
+    margin-top: $spacing-400;
+
+    @include tablet {
+        height: 300px;
+        margin-top: 40px;
+        padding: $spacing-300 $spacing-400;
+    }
+    
+    @include desktop {
+        flex: 1;
+        height: auto;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+}
+
+.results-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    
+    @include desktop {
+        justify-content: space-between;
+    }
+}
+
+.amount-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &.tip {
+        margin-bottom: $spacing-300;
+
+        @include tablet {
+            margin-bottom: $spacing-100;
+        }
+        
+        @include desktop {
+            margin-bottom: $spacing-400;
+        }
+    }
+
+    &.total {
+        margin-bottom: $spacing-400;
+
+        @include tablet {
+            margin-bottom: $spacing-100;
+        }
+        
+        @include desktop {
+            margin-bottom: $spacing-600; 
+        }
+    }
+}
+
+.reset-btn {
+    width: 100%;
+    height: 48px;
+    @include text-preset-4;
+    padding: $spacing-100 $spacing-400;
+    border-radius: 5px;
+    border: none;
+    background-color: $green-750;
+    color: $green-800;
+    transition: background-color .5s ease;
+
+    &:hover {
+        background-color: $green-200;
+    }
+}
