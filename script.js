@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     const tipButtons = document.querySelectorAll(".tip-option");
     const resetButton = document.getElementById("resetButton");
-    const customAmount = document.getElementById("customAmount");
     const customTipInput = document.getElementById("customTipInput");
+    const inputs = document.querySelectorAll(".validate-number");
 
     function calculateTip(tipPercent) {
         const billAmount = parseFloat(document.getElementById("billInput").value) || 0;
@@ -29,6 +29,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
         calculateTip(customTipPercent);
     });
 
+    inputs.forEach(input => {
+        input.addEventListener("input", () => {
+            const wrapper = input.closest('.input-wrapper');
+            const value = input.value.trim();
+
+            if (value === "" || Number(value) !== 0) {
+                wrapper.classList.remove('error');
+            }  else if (Number(value) === 0) {
+                wrapper.classList.add('error');
+            }
+        });
+    });
+
     function resetCalculator() {
         document.getElementById("billInput").value = "";
         document.getElementById("peopleInput").value = "";
@@ -36,4 +49,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
         document.getElementById("totalAmount").textContent = "0.00";
     };
     resetButton.addEventListener("click", resetCalculator);
+    resetCalculator();
 });

@@ -145,6 +145,11 @@ header {
   }
 }
 
+.input-wrapper.error {
+  box-shadow: 0 0 0 2px rgb(225, 112, 82);
+  border-radius: 5px;
+}
+
 .input-wrapper {
   position: relative;
   width: 100%;
